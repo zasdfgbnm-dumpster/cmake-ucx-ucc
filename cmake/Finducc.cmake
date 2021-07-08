@@ -16,7 +16,12 @@ find_library(ucc_LIBRARY
 )
 
 # TODO: read version from ucc/api/ucc_version.h
-set(ucc_VERSION ${PC_ucc_VERSION})
+set(_UCC_VER_FILE "${ucc_INCLUDE_DIR}/ucc/api/ucc_version.h")
+if(EXISTS "${_UCC_VER_FILE}")
+  file(READ "${_UCC_VER_FILE}" ver)
+  string(REGEX MATCH "#define UCC_VERSION_STRING \"([0-9]*.[0-9]*.[0-9]*)\"" _ ${ver})
+  set(ucc_VERSION ${CMAKE_MATCH_1})
+endif()
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(ucc
