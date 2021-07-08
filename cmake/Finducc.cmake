@@ -1,22 +1,26 @@
 # Reference:
 # https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html#find-modules
 
+# TODO: add docs
+
 find_package(PkgConfig)
 pkg_check_modules(PC_ucc QUIET ucc)
 
 find_path(ucc_INCLUDE_DIR
   NAMES ucc/api/ucc.h
-  PATHS ${PC_ucc_INCLUDE_DIRS}
-  HINTS "/opt/ucc/include" "/opt/ucf/ucc/include"
+  PATHS ${PC_ucc_INCLUDE_DIRS} "/opt/ucc/include" "/opt/ucf/ucc/include"
 )
 find_library(ucc_LIBRARY
   NAMES ucc
-  PATHS ${PC_ucc_LIBRARY_DIRS}
-  HINTS "/opt/ucc/lib" "/opt/ucf/ucc/lib"
+  PATHS ${PC_ucc_LIBRARY_DIRS} "/opt/ucc/lib" "/opt/ucf/ucc/lib"
 )
 
-# TODO: read version from ucc/api/ucc_version.h
-set(ucc_VERSION ${PC_ucc_VERSION})
+set(_UCC_VER_FILE "${ucc_INCLUDE_DIR}/ucc/api/ucc_version.h")
+if(EXISTS "${_UCC_VER_FILE}")
+  file(READ "${_UCC_VER_FILE}" _ver)
+  string(REGEX MATCH "#define UCC_VERSION_STRING *\"([0-9]*.[0-9]*.[0-9]*)\"" _ ${_ver})
+  set(ucc_VERSION ${CMAKE_MATCH_1})
+endif()
 
 include(FindPackageHandleStandardArgs)
 find_package_handle_standard_args(ucc
@@ -43,6 +47,6 @@ if(ucc_FOUND AND NOT TARGET ucc::ucc)
 endif()
 
 mark_as_advanced(
-  Foo_INCLUDE_DIR
-  Foo_LIBRARY
+  ucc_INCLUDE_DIR
+  ucc_LIBRARY
 )
