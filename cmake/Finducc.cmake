@@ -1,6 +1,8 @@
 # Reference:
 # https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html#find-modules
 
+# TODO: add docs
+
 find_package(PkgConfig)
 pkg_check_modules(PC_ucc QUIET ucc)
 
@@ -43,6 +45,6 @@ if(ucc_FOUND AND NOT TARGET ucc::ucc)
 endif()
 
 mark_as_advanced(
-  Foo_INCLUDE_DIR
-  Foo_LIBRARY
+  ucc_INCLUDE_DIR
+  ucc_LIBRARY
 )
