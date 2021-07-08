@@ -19,8 +19,8 @@ jobs:
     - name: Configure CMake
       run: |
         set -eux
-        cmake -S ${{github.workspace}}/src/ucx -B ${{github.workspace}}/build/ucx -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
-        cmake -S ${{github.workspace}}/src/ucc -B ${{github.workspace}}/build/ucc -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
+        cmake -S ${{github.workspace}}/test/ucx -B ${{github.workspace}}/build/ucx -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
+        cmake -S ${{github.workspace}}/test/ucc -B ${{github.workspace}}/build/ucc -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
 
     - name: Build
       # Build your program with the given configuration
