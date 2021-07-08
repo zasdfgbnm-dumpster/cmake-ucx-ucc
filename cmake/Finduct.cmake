@@ -18,7 +18,7 @@ find_library(uct_LIBRARY
 set(_uct_VER_FILE "${uct_INCLUDE_DIR}/uct/api/version.h")
 if(EXISTS "${_uct_VER_FILE}")
   file(READ "${_uct_VER_FILE}" _ver)
-  string(REGEX MATCH "#define uct_VERSION_STRING \"([0-9]*.[0-9]*.[0-9]*)\"" _ ${_ver})
+  string(REGEX MATCH "#define UCT_VERNO_STRING *\"([0-9]*.[0-9]*.[0-9]*)\"" _ ${_ver})
   set(uct_VERSION ${CMAKE_MATCH_1})
 endif()
 
