@@ -251,11 +251,11 @@ static ucs_status_t request_wait(ucp_worker_h ucp_worker, void *request,
     if (request == NULL) {
         return UCS_OK;
     }
-    
+
     if (UCS_PTR_IS_ERR(request)) {
         return UCS_PTR_STATUS(request);
     }
-    
+
     while (ctx->complete == 0) {
         ucp_worker_progress(ucp_worker);
     }
@@ -587,7 +587,7 @@ static int parse_cmd(int argc, char *const argv[], char **server_addr,
             if (test_string_length < 0) {
                 fprintf(stderr, "Wrong string size %ld\n", test_string_length);
                 return UCS_ERR_UNSUPPORTED;
-            }	
+            }
             break;
         case 'm':
             test_mem_type = parse_mem_type(optarg);
