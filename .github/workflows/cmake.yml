@@ -50,6 +50,5 @@ jobs:
       run: cmake --build . --config ${{matrix.BUILD_TYPE}}
 
     - name: Test
-      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
-      run: ./main
+      run: ./run_${{matrix.PROJECT}}.sh
 
