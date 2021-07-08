@@ -15,7 +15,6 @@ find_library(ucc_LIBRARY
   PATHS ${PC_ucc_LIBRARY_DIRS} "/opt/ucc/lib" "/opt/ucf/ucc/lib"
 )
 
-# TODO: read version from ucc/api/ucc_version.h
 set(_UCC_VER_FILE "${ucc_INCLUDE_DIR}/ucc/api/ucc_version.h")
 if(EXISTS "${_UCC_VER_FILE}")
   file(READ "${_UCC_VER_FILE}" ver)
