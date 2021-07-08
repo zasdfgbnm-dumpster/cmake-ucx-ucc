@@ -1,4 +1,4 @@
-set(CMAKE_MODULE_PATH "../../cmake;${CMAKE_MODULE_PATH}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../../cmake")
 project(main)
 find_package(ucc REQUIRED)
 add_executable(${PROJECT_NAME} main.cpp)
