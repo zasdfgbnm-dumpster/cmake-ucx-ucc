@@ -8,13 +8,11 @@ pkg_check_modules(PC_ucc QUIET ucc)
 
 find_path(ucc_INCLUDE_DIR
   NAMES ucc/api/ucc.h
-  PATHS ${PC_ucc_INCLUDE_DIRS}
-  HINTS "/opt/ucc/include" "/opt/ucf/ucc/include"
+  PATHS ${PC_ucc_INCLUDE_DIRS} "/opt/ucc/include" "/opt/ucf/ucc/include"
 )
 find_library(ucc_LIBRARY
   NAMES ucc
-  PATHS ${PC_ucc_LIBRARY_DIRS}
-  HINTS "/opt/ucc/lib" "/opt/ucf/ucc/lib"
+  PATHS ${PC_ucc_LIBRARY_DIRS} "/opt/ucc/lib" "/opt/ucf/ucc/lib"
 )
 
 # TODO: read version from ucc/api/ucc_version.h
