@@ -1,11 +1,18 @@
 cmake_minimum_required(VERSION 3.5)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../../cmake")
 
-project(main)
+project(ucx-tests)
 
 find_package(ucx REQUIRED COMPONENTS ucp uct ucs)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(ucp_client_server ucp_client_server.c)
+target_include_directories(ucp_client_server PUBLIC ${ucx_INCLUDE_DIRS})
+target_link_libraries(ucp_client_server ucx::ucp ucx::uct ucx::ucs)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${ucx_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ucx::ucp ucx::uct ucx::ucs)
+add_executable(ucp_hello_world ucp_hello_world.c)
+target_include_directories(ucp_hello_world PUBLIC ${ucx_INCLUDE_DIRS})
+target_link_libraries(ucp_hello_world ucx::ucp ucx::uct ucx::ucs)
+
+add_executable(uct_hello_world uct_hello_world.c)
+target_include_directories(uct_hello_world PUBLIC ${ucx_INCLUDE_DIRS})
+target_link_libraries(uct_hello_world ucx::ucp ucx::uct ucx::ucs)
