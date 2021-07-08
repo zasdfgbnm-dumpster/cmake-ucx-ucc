@@ -5,7 +5,11 @@ project(main)
 
 find_package(ucc REQUIRED)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME}
+  main.cpp
+  impl.cpp
+  utils.cpp
+)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${ucc_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ucc::ucc)
