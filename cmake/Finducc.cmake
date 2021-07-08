@@ -18,7 +18,7 @@ find_library(ucc_LIBRARY
 set(_UCC_VER_FILE "${ucc_INCLUDE_DIR}/ucc/api/ucc_version.h")
 if(EXISTS "${_UCC_VER_FILE}")
   file(READ "${_UCC_VER_FILE}" _ver)
-  string(REGEX MATCH "#define UCC_VERSION_STRING \"([0-9]*.[0-9]*.[0-9]*)\"" _ ${_ver})
+  string(REGEX MATCH "#define UCC_VERSION_STRING *\"([0-9]*.[0-9]*.[0-9]*)\"" _ ${_ver})
   set(ucc_VERSION ${CMAKE_MATCH_1})
 endif()
 
