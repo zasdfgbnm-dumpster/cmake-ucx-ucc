@@ -6,8 +6,12 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  OPENUCX_LINK: https://github.com/openucx/ucx.git
+  UCC_LINK: https://github.com/openucx/ucc.git
+
 jobs:
-  test:
+  system:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,6 +20,24 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Get UCX
+      run: |
+        set -eux
+        git clone ${OPENUCX_LINK} /tmp/ucx
+        cd /tmp/ucx &&
+        ./autogen.sh
+        ./contrib/configure-release-mt --without-java --disable-numa --prefix=/opt/ucx
+        make -j install
+
+    - name: Get UCC
+      run: |
+        set -eux
+        git clone ${UCC_LINK} /tmp/ucc
+        cd /tmp/ucc
+        ./autogen.sh
+        ./configure --with-ucx=/opt/ucx --prefix=/opt/ucc
+        make -j install
 
     - name: Configure CMake
       run: |
