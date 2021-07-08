@@ -10,6 +10,6 @@ add_executable(${PROJECT_NAME}
   impl.cpp
   utils.cpp
 )
-
+set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 target_include_directories(${PROJECT_NAME} PUBLIC ${ucc_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ucc::ucc)
