@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,9 +24,10 @@ jobs:
         cmake -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}} -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
 
     - name: Build
-      run: cmake --build build/${{matrix.PROJECT}} --config ${{matrix.BUILD_TYPE}}
+      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
+      run: cmake --build . --config ${{matrix.BUILD_TYPE}}
 
     - name: Test
-      working-directory: ${{github.workspace}}/build
-      run: ctest -C ${{matrix.BUILD_TYPE}}
+      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
+      run: ./main
 
