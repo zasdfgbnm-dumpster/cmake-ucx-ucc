@@ -1,0 +1,33 @@
+name: CMake
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        BUILD_TYPE: [Release, Debug, RelWithDebInfo]
+        PROJECT: [ucx, ucc]
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure CMake
+      run: |
+        set -eux
+        mkdir -p build/${{matrix.PROJECT}}
+        cmake -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}} -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
+
+    - name: Build
+      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
+      run: cmake --build . --config ${{matrix.BUILD_TYPE}}
+
+    - name: Test
+      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
+      run: ./main
+

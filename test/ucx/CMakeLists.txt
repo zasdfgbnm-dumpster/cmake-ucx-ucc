@@ -1,4 +1,4 @@
 include(../../cmake/ucx.cmake)
 
-project(test_ucx)
+project(main)
 add_executable(${PROJECT_NAME} main.cpp)
