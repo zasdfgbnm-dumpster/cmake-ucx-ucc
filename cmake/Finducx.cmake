@@ -6,50 +6,6 @@
 find_package(PkgConfig)
 pkg_check_modules(PC_ucx QUIET ucx)
 
-
-# debug
-# get_cmake_property(_variableNames VARIABLES)
-# list (SORT _variableNames)
-# foreach (_variableName ${_variableNames})
-#   message("${_variableName} = ${${_variableName}}")
-# endforeach()
-# PC_ucx_CFLAGS =
-# PC_ucx_CFLAGS_I =
-# PC_ucx_CFLAGS_OTHER =
-# PC_ucx_FOUND = 1
-# PC_ucx_INCLUDEDIR = /usr/include
-# PC_ucx_INCLUDE_DIRS =
-# PC_ucx_LDFLAGS = -lucs;-luct;-lucp
-# PC_ucx_LDFLAGS_OTHER =
-# PC_ucx_LIBDIR = /usr/lib
-# PC_ucx_LIBRARIES = ucs;uct;ucp
-# PC_ucx_LIBRARY_DIRS =
-# PC_ucx_LIBS =
-# PC_ucx_LIBS_L =
-# PC_ucx_LIBS_OTHER =
-# PC_ucx_LIBS_PATHS =
-# PC_ucx_LINK_LIBRARIES = /usr/lib/libucs.so;/usr/lib/libuct.so;/usr/lib/libucp.so
-# PC_ucx_MODULE_NAME = ucx
-# PC_ucx_PREFIX = /usr
-# PC_ucx_STATIC_CFLAGS =
-# PC_ucx_STATIC_CFLAGS_I =
-# PC_ucx_STATIC_CFLAGS_OTHER =
-# PC_ucx_STATIC_INCLUDE_DIRS =
-# PC_ucx_STATIC_LDFLAGS = -lucs;-luct;-lucp
-# PC_ucx_STATIC_LDFLAGS_OTHER =
-# PC_ucx_STATIC_LIBDIR =
-# PC_ucx_STATIC_LIBRARIES = ucs;uct;ucp
-# PC_ucx_STATIC_LIBRARY_DIRS =
-# PC_ucx_STATIC_LIBS =
-# PC_ucx_STATIC_LIBS_L =
-# PC_ucx_STATIC_LIBS_OTHER =
-# PC_ucx_STATIC_LIBS_PATHS =
-# PC_ucx_VERSION = 1.12
-# PC_ucx_ucx_INCLUDEDIR =
-# PC_ucx_ucx_LIBDIR =
-# PC_ucx_ucx_PREFIX =
-# PC_ucx_ucx_VERSION =
-
 find_path(ucx_ucp_INCLUDE_DIR
   NAMES ucp/api/ucp.h
   PATHS ${PC_ucx_INCLUDEDIR} "/opt/ucx/include"
