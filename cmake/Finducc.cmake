@@ -3,9 +3,6 @@
 
 # TODO: add docs
 
-find_package(PkgConfig)
-pkg_check_modules(PC_ucc QUIET ucc)
-
 find_path(ucc_INCLUDE_DIR
   NAMES ucc/api/ucc.h
   PATHS ${PC_ucc_INCLUDE_DIRS} "/opt/ucc/include" "/opt/ucf/ucc/include"

@@ -3,11 +3,9 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../../cmake")
 
 project(main)
 
-find_package(ucp REQUIRED)
-find_package(uct REQUIRED)
-find_package(ucs REQUIRED)
+find_package(ucx REQUIRED COMPONENTS ucp uct ucs)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${ucp_INCLUDE_DIRS} ${uct_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ucp::ucp uct::uct ucs::ucs)
+target_include_directories(${PROJECT_NAME} PUBLIC ${ucx_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ucx::ucp ucx::uct ucx::ucs)
