@@ -2,7 +2,7 @@
 # file Copyright.txt or https://cmake.org/licensing for details.
 
 #[=======================================================================[.rst:
-Finducc
+Finducx
 -------
 
 Finds the `ucx`_ library.
