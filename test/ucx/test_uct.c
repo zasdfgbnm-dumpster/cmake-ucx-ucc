@@ -7,7 +7,7 @@ int main(int argc, char **argv)
     uct_worker_h worker;
 
     /* Initialize context */
-    status = ucs_async_context_create(UCS_ASYNC_MODE_THREAD_SPINLOCK, &async);
+    ucs_status_t status = ucs_async_context_create(UCS_ASYNC_MODE_THREAD_SPINLOCK, &async);
     assert(UCS_OK == status);
 
     /* Create a worker object */
