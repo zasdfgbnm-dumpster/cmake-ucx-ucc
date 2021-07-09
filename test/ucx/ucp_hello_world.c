@@ -292,7 +292,7 @@ static int run_ucx_client(ucp_worker_h ucp_worker)
             CHKERR_JUMP(status != UCS_OK, "test_poll_wait\n", err_ep);
         }
     }
-    
+
     if (err_handling_opt.failure_mode == FAILURE_MODE_KEEPALIVE) {
         fprintf(stderr, "Emulating unexpected failure after receive completion "
                         "on client side, server should detect error by "
@@ -691,7 +691,7 @@ ucs_status_t parse_cmd(int argc, char * const argv[], char **server_name)
             if (test_string_length < 0) {
                 fprintf(stderr, "Wrong string size %ld\n", test_string_length);
                 return UCS_ERR_UNSUPPORTED;
-            }	
+            }
             break;
         case 'm':
             test_mem_type = parse_mem_type(optarg);
