@@ -68,6 +68,6 @@ int main(int argc, char *argv[]) {
   allreduce();
 
   std::this_thread::sleep_for(std::chrono::seconds(rank));
-  std::cout << std::endl << "After alltoall, buffers are:" << std::endl;
+  std::cout << std::endl << "After allreduce, buffers are:" << std::endl;
   print_buffer(output);
 }
