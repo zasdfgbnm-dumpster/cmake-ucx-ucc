@@ -22,6 +22,6 @@ ip addr
 build/ucx/uct_hello_world -d eth0 -t tcp &
 pid0=$!
 sleep 1
-build/ucx/uct_hello_world -d eth0 -t tcp  -n 127.0.0.1 &
+build/ucx/uct_hello_world -d eth0 -t tcp -n 127.0.0.1 &
 wait "${pid0}"
 wait "${pid1}"
