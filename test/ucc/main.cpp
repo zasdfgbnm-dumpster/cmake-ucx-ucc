@@ -1,13 +1,12 @@
 #include <ucc/api/ucc.h>
 #include <cstring>
-
+#include <cassert>
 
 int main(int argc, char *argv[]) {
   ucc_lib_config_h lib_config;
-  ucc_context_config_h context_config;
   ucc_lib_params_t lib_params;
-  ucc_context_params_t context_params;
   ucc_status_t st;
+  ucc_lib_h lib;
 
   st = ucc_lib_config_read(nullptr, nullptr, &lib_config);
   assert(st == UCC_OK, "Failed to read config");
