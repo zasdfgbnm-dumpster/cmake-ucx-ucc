@@ -43,11 +43,11 @@ jobs:
       run: |
         set -eux
         mkdir -p build/${{matrix.PROJECT}}
-        cmake --verbose -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}}
+        cmake -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}}
 
     - name: Build
       working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
-      run: cmake --verbose --build .
+      run: cmake --build . --verbose
 
     - name: Test
       timeout-minutes: 1
