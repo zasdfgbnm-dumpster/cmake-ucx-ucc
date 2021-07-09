@@ -1,73 +1,19 @@
-#include <string>
-#include <iostream>
-#include <vector>
-#include <cstdlib>
-#include <random>
-#include <stdexcept>
-#include <thread>
-#include <chrono>
-
-#include "utils.hpp"
-
-int N = 5;
-using T = int;
-int world_size;
-int rank;
-
-int get_device() {
-  return rank;
-}
-
-T *input;
-T *output;
-
-void allocate_buffers() {
-  input = new T[N * world_size];
-  output = new T[N * world_size];
-}
-
-void initialize_input() {
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<int> d(0, N * world_size);
-
-  for (int i = 0; i < world_size; i++) {
-    for (int j = 0; j < N; j++) {
-      T value = d(gen);
-      *(input + N * i + j) = value;
-    }
-  }
-}
-
-template<typename T>
-void print_buffer(T *ptr) {
-  for (int i = 0; i < world_size; i++) {
-    for (int j = 0; j < N; j++) {
-      std::cout << ptr[N * i + j] << ", ";
-    }
-    std::cout << std::endl;
-  }
-}
-
-void alltoall();
-void allreduce();
+#include <ucc/api/ucc.h>
+#include <cstring>
+#include <cassert>
 
 int main(int argc, char *argv[]) {
-  check(argc == 3, "Bad argument");
-  world_size = std::stoi(argv[1]);
-  rank = std::stoi(argv[2]);
-  std::cout << "World size: " << world_size << ", " << "Rank: " << rank << std::endl;
+  ucc_lib_config_h lib_config;
+  ucc_lib_params_t lib_params;
+  ucc_status_t st;
+  ucc_lib_h lib;
 
-  allocate_buffers();
-  initialize_input();
-
-  std::this_thread::sleep_for(std::chrono::seconds(rank));
-  std::cout << std::endl << "Buffers initialized as:" << std::endl;
-  print_buffer(input);
-
-  allreduce();
-
-  std::this_thread::sleep_for(std::chrono::seconds(rank));
-  std::cout << std::endl << "After allreduce, buffers are:" << std::endl;
-  print_buffer(output);
+  st = ucc_lib_config_read(nullptr, nullptr, &lib_config);
+  assert(st == UCC_OK);
+  memset(&lib_params, 0, sizeof(ucc_lib_params_t));
+  lib_params.mask = UCC_LIB_PARAM_FIELD_THREAD_MODE;
+  lib_params.thread_mode = UCC_THREAD_MULTIPLE;
+  st = ucc_init(&lib_params, lib_config, &lib);
+  assert(st == UCC_OK);
+  ucc_lib_config_release(lib_config);
 }
