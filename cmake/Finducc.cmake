@@ -1,7 +1,47 @@
-# Reference:
-# https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html#find-modules
+# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
+# file Copyright.txt or https://cmake.org/licensing for details.
 
-# TODO: add docs
+#[=======================================================================[.rst:
+Finducc
+-------
+
+Finds the `ucc`_ library.
+
+.. _ucc: https://github.com/openucx/ucc
+
+Imported Targets
+^^^^^^^^^^^^^^^^
+
+This module provides the following imported targets, if found:
+
+``ucc::ucc``
+  The ucc library
+
+Result Variables
+^^^^^^^^^^^^^^^^
+
+This will define the following variables:
+
+``ucc_FOUND``
+  True if the system has the ucc library.
+``ucc_VERSION``
+  The version of the ucc library which was found.
+``ucc_INCLUDE_DIRS``
+  Include directories needed to use ucc.
+``ucc_LIBRARIES``
+  Libraries needed to link to ucc.
+
+Cache Variables
+^^^^^^^^^^^^^^^
+
+The following cache variables may also be set:
+
+``ucc_INCLUDE_DIR``
+  The directory containing ``ucc/api/ucc.h``.
+``ucc_LIBRARY``
+  The path to the ucc library.
+
+#]=======================================================================]
 
 find_path(ucc_INCLUDE_DIR
   NAMES ucc/api/ucc.h

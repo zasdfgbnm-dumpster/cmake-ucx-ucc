@@ -1,7 +1,61 @@
-# Reference:
-# https://cmake.org/cmake/help/latest/manual/cmake-developer.7.html#find-modules
+# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
+# file Copyright.txt or https://cmake.org/licensing for details.
 
-# TODO: add docs
+#[=======================================================================[.rst:
+Finducx
+-------
+
+Finds the `ucx`_ library.
+
+.. _ucx: https://github.com/openucx/ucx
+
+Imported Targets
+^^^^^^^^^^^^^^^^
+
+This module provides the following imported targets, if found:
+
+``ucx::ucp``
+  The ucp library
+
+``ucx::uct``
+  The uct library
+
+``ucx::ucs``
+  The ucs library
+
+Result Variables
+^^^^^^^^^^^^^^^^
+
+This will define the following variables:
+
+``ucx_FOUND``
+  True if the system has the ucx library.
+``ucx_VERSION``
+  The version of the ucx library which was found.
+``ucx_INCLUDE_DIRS``
+  Include directories needed to use ucx.
+``ucx_LIBRARIES``
+  Libraries needed to link to ucx.
+
+Cache Variables
+^^^^^^^^^^^^^^^
+
+The following cache variables may also be set:
+
+``ucx_ucp_INCLUDE_DIR``
+  The directory containing ``ucp/api/ucp.h``.
+``ucx_uct_INCLUDE_DIR``
+  The directory containing ``uct/api/uct.h``.
+``ucx_ucs_INCLUDE_DIR``
+  The directory containing ``ucs/config/global_opts.h``.
+``ucx_ucp_LIBRARY``
+  The path to the ucp library.
+``ucx_uct_LIBRARY``
+  The path to the uct library.
+``ucx_ucs_LIBRARY``
+  The path to the ucs library.
+
+#]=======================================================================]
 
 find_package(PkgConfig)
 pkg_check_modules(PC_ucx QUIET ucx)
