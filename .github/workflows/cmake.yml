@@ -30,7 +30,7 @@ jobs:
         make -j install
 
     - name: Get UCC
-      if: contains(matrix.PROJECT, 'ucc')
+      if: contains(matrix.PROJECT, 'ucx')
       run: |
         set -eux
         git clone ${UCC_LINK} /tmp/ucc
