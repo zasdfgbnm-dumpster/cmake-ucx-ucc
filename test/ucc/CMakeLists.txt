@@ -1,15 +1,11 @@
 cmake_minimum_required(VERSION 3.5)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../../cmake")
 
-project(main)
+project(TestFinducc)
 
 find_package(ucc REQUIRED)
 
-add_executable(${PROJECT_NAME}
-  main.cpp
-  impl.cpp
-  utils.cpp
-)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
-target_include_directories(${PROJECT_NAME} PUBLIC ${ucc_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} ucc::ucc)
+add_executable(test_ucc main.cpp)
+target_include_directories(test_ucc PUBLIC ${ucc_INCLUDE_DIRS})
+target_link_libraries(test_ucc ucc::ucc)
+add_test(NAME test_ucc COMMAND test_ucc)
