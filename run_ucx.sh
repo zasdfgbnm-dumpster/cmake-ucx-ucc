@@ -2,18 +2,18 @@
 
 set -eux
 
-build/ucx/ucp_client_server &
+build/ucx/ucp_client_server -p 13337 &
 pid0=$!
 sleep 1
-build/ucx/ucp_client_server -a 127.0.0.1 &
+build/ucx/ucp_client_server -p 13337 -a 127.0.0.1 &
 pid1=$!
 wait "${pid0}"
 wait "${pid1}"
 
-build/ucx/ucp_hello_world &
+build/ucx/ucp_hello_world -p 13338 &
 pid0=$!
 sleep 1
-build/ucx/ucp_hello_world -n 127.0.0.1 &
+build/ucx/ucp_hello_world -p 13338 -n 127.0.0.1 &
 pid1=$!
 wait "${pid0}"
 wait "${pid1}"
