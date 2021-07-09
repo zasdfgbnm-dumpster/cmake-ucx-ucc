@@ -11,7 +11,7 @@ build/ucx/ucp_hello_world &
 pid0=$!
 sleep 1
 build/ucx/ucp_hello_world -n 127.0.0.1
-pid0=$1
+pid1=$!
 wait "${pid0}"
 wait "${pid1}"
 
