@@ -3,5 +3,12 @@
 set -eux
 
 build/ucc/main 2 0 &
+pid0=$!
+
 build/ucc/main 2 1 &
-wait
+pid1=$!
+
+wait "${pid0}"
+wait "${pid1}"
+
+echo "Succeed"
