@@ -49,6 +49,7 @@ jobs:
       working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
       run: cmake --build . --config ${{matrix.BUILD_TYPE}}
 
-    # - name: Test
-    #   run: ./run_${{matrix.PROJECT}}.sh
+    - name: Test
+      timeout-minutes: 1
+      run: ./run_${{matrix.PROJECT}}.sh
 
