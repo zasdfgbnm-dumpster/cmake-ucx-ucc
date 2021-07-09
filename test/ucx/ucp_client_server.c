@@ -906,6 +906,8 @@ static int run_server(ucp_context_h ucp_context, ucp_worker_h ucp_worker,
         /* Close the endpoint to the client */
         ep_close(ucp_data_worker, server_ep);
 
+        exit(0);
+
         /* Reinitialize the server's context to be used for the next client */
         context.conn_request = NULL;
 

@@ -15,7 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        BUILD_TYPE: [Release, Debug, RelWithDebInfo]
         PROJECT: [ucx, ucc]
 
     steps:
@@ -31,6 +30,7 @@ jobs:
         make -j install
 
     - name: Get UCC
+      if: ${{matrix.PROJECT}} != "ucx"
       run: |
         set -eux
         git clone ${UCC_LINK} /tmp/ucc
@@ -43,11 +43,11 @@ jobs:
       run: |
         set -eux
         mkdir -p build/${{matrix.PROJECT}}
-        cmake -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}} -DCMAKE_BUILD_TYPE=${{matrix.BUILD_TYPE}}
+        cmake -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}}
 
     - name: Build
       working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
-      run: cmake --build . --config ${{matrix.BUILD_TYPE}}
+      run: cmake --build .
 
     - name: Test
       timeout-minutes: 1
