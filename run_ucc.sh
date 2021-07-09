@@ -2,6 +2,6 @@
 
 set -eux
 
-build/ucc/main
+build/ucc/test_ucc
 
 echo "Succeed"

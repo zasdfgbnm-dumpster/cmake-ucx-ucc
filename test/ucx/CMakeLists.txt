@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/../../cmake")
 
-project(ucx-tests)
+project(TestFinducx)
 
 find_package(ucx REQUIRED COMPONENTS ucp uct ucs)
 
