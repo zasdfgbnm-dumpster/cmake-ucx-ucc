@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
-include(CTest)
 
 project(TestFinducx)
+include(CTest)
 
 find_package(ucx REQUIRED COMPONENTS ucp uct ucs)
 

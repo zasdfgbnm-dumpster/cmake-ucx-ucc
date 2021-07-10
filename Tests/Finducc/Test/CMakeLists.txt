@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
-include(CTest)
 
 project(TestFinducc)
+include(CTest)
 
 find_package(ucc REQUIRED)
 
