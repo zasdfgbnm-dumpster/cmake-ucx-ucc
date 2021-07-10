@@ -47,7 +47,7 @@ jobs:
 
     - name: Build
       working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
-      run: cmake --build .
+      run: cmake --build . --verbose
 
     - name: Test
       timeout-minutes: 1
