@@ -40,6 +40,7 @@ jobs:
         make -j install
 
     - name: Test
+      working-directory: ${{github.workspace}}/Tests/Find${{matrix.PROJECT}}/Test
       timeout-minutes: 1
       run: ctest .
 
