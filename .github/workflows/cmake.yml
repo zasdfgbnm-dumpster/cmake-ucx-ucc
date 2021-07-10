@@ -41,6 +41,5 @@ jobs:
 
     - name: Test
       timeout-minutes: 1
-      working-directory: ${{github.workspace}}/test/Finducc
       run: ctest .
 
