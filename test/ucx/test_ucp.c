@@ -1,5 +1,6 @@
 #include <ucp/api/ucp.h>
 #include <assert.h>
+#include <string.h>
 
 int main(int argc, char **argv)
 {
