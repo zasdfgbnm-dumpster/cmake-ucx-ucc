@@ -10,8 +10,8 @@ int main(int argc, char **argv)
 
     memset(&ucp_params, 0, sizeof(ucp_params));
 
-    ucp_params.field_mask = UCP_PARAM_FIELD_FEATURES;
-    ucp_params.features = UCP_FEATURE_STREAM;
+    // ucp_params.field_mask = UCP_PARAM_FIELD_FEATURES;
+    // ucp_params.features = UCP_FEATURE_STREAM;
 
     status = ucp_init(&ucp_params, NULL, ucp_context);
     assert(status == UCS_OK);
