@@ -2,4 +2,5 @@
 
 set -eux
 
-build/ucc/test_ucc
+cd test/Finducc
+ctest .
