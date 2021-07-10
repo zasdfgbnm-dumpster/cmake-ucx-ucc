@@ -1,3 +1,3 @@
 cmake_minimum_required(VERSION 3.5)
 project(cmake-ucx-ucc)
-include(Tests/CMakeLists.txt)
+include(${CMAKE_CURRENT_SOURCE_DIR}/Tests/CMakeLists.txt)
