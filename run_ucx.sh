@@ -3,4 +3,4 @@
 set -eux
 
 build/ucx/test_ucp
-# build/ucx/test_uct
+build/ucx/test_uct
