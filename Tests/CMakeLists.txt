@@ -1,2 +1,2 @@
-add_subdirectory(Finducc)
-add_subdirectory(Finducx)
+include(Finducc/CMakeLists.txt)
+include(Finducx/CMakeLists.txt)
