@@ -12,5 +12,5 @@ add_test(NAME test_ucp COMMAND test_ucp)
 
 add_executable(test_uct test_uct.c)
 target_include_directories(test_uct PUBLIC ${ucx_INCLUDE_DIRS})
-target_link_libraries(test_ucp ucx::uct ucx::ucs)
+target_link_libraries(test_uct ucx::uct ucx::ucs)
 add_test(NAME test_uct COMMAND test_uct)
