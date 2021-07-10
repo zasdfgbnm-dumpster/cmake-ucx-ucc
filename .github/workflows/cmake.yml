@@ -13,6 +13,9 @@ env:
 jobs:
   system:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        PROJECT: [ucx, ucc]
 
     steps:
     - uses: actions/checkout@v2
@@ -27,6 +30,7 @@ jobs:
         make -j install
 
     - name: Get UCC
+      if: contains(matrix.PROJECT, 'ucc')
       run: |
         set -eux
         git clone ${UCC_LINK} /tmp/ucc
@@ -38,15 +42,14 @@ jobs:
     - name: Configure CMake
       run: |
         set -eux
-        mkdir -p build
-        cmake -S . -B build
+        mkdir -p build/${{matrix.PROJECT}}
+        cmake -S Tests/Find${{matrix.PROJECT}}/Test -B build/${{matrix.PROJECT}}
 
     - name: Build
-      working-directory: ${{github.workspace}}/build
+      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
       run: cmake --build . --verbose
 
     - name: Test
-      run: |
-        set -eux
-        ctest -R Finducc.Test
-        ctest -R Finducx.Test
+      timeout-minutes: 1
+      run: ctest -R '.*'
+
