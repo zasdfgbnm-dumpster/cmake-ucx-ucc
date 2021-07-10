@@ -48,4 +48,3 @@ jobs:
     - name: Test
       timeout-minutes: 1
       run: ctest .
-
