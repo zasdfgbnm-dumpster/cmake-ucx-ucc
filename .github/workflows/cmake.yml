@@ -39,17 +39,8 @@ jobs:
         ./configure --with-ucx=/opt/ucx --prefix=/opt/ucc
         make -j install
 
-    - name: Configure CMake
-      run: |
-        set -eux
-        mkdir -p build/${{matrix.PROJECT}}
-        cmake -S test/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}}
-
-    - name: Build
-      working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
-      run: cmake --build . --verbose
-
     - name: Test
       timeout-minutes: 1
-      run: ./run_${{matrix.PROJECT}}.sh
+      working-directory: ${{github.workspace}}/test/Finducc
+      run: ctest .
 
