@@ -8,7 +8,7 @@ on:
 
 env:
   OPENUCX_LINK: https://github.com/openucx/ucx.git
-  UCC_LINK: https://github.com/openucx/ucc.git
+  UCC_LINK: https://github.com/zasdfgbnm/ucc.git
 
 jobs:
   system:
@@ -33,11 +33,12 @@ jobs:
       if: contains(matrix.PROJECT, 'ucc')
       run: |
         set -eux
-        git clone ${UCC_LINK} /tmp/ucc
+        git clone ${UCC_LINK} -b cmake /tmp/ucc
         cd /tmp/ucc
         ./autogen.sh
         ./configure --with-ucx=/opt/ucx --prefix=/opt/ucc
         make -j install
+        cp -r cmake /opt/ucc/lib/
 
     - name: Configure CMake
       run: |
