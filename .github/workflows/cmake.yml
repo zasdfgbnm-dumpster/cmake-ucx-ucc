@@ -38,8 +38,6 @@ jobs:
         ./autogen.sh
         ./configure --with-ucx=/opt/ucx --prefix=/opt/ucc
         make -j install
-        mkdir -p /opt/ucc/lib/cmake/ucc/
-        cp -r cmake/*.cmake /opt/ucc/lib/cmake/ucc/
 
     - name: Configure CMake
       run: |
