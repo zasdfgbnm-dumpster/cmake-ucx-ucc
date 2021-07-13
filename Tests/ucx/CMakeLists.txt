@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.5)
 project(TestFinducx)
 include(CTest)
 
-find_package(ucx REQUIRED COMPONENTS ucp uct ucs)
+find_package(ucx REQUIRED COMPONENTS ucp uct ucs HINTS /opt/ucx)
 
 add_executable(test_ucp test_ucp.c)
 target_include_directories(test_ucp PUBLIC ${ucx_INCLUDE_DIRS})
