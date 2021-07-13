@@ -43,7 +43,7 @@ jobs:
       run: |
         set -eux
         mkdir -p build/${{matrix.PROJECT}}
-        cmake -DCMAKE_MODULE_PATH=$PWD/cmake -S Tests/Find${{matrix.PROJECT}}/Test -B build/${{matrix.PROJECT}}
+        cmake -DCMAKE_MODULE_PATH=$PWD/cmake -S Tests/${{matrix.PROJECT}} -B build/${{matrix.PROJECT}}
 
     - name: Build
       working-directory: ${{github.workspace}}/build/${{matrix.PROJECT}}
